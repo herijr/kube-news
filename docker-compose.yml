@@ -1,0 +1,17 @@
+version: '3'
+services:
+  postgre:
+    image: docker.io/postgres:14.3
+    environment:
+      - POSTGRES_PASSWORD=Kube#123
+      - POSTGRES_USER=kubenews
+      - POSTGRES_DB=kubenews
+  kubenews:
+    image: docker.io/herijr/kubenews:latest
+    ports:
+      - '8888:8080'
+    environment:
+      - DB_DATABASE=kubenews
+      - DB_USERNAME=kubenews
+      - DB_PASSWORD=Kube#123
+      - DB_HOST=postgre
